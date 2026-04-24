@@ -1,0 +1,63 @@
+export const questions = [
+  {
+    id: "position",
+    text: "What's your position?",
+    subtitle: "Pick what fits your game best.",
+    options: [
+      { value: "pg", label: "Point Guard",       desc: "Run the show, create for others",    emoji: "1️⃣" },
+      { value: "sg", label: "Shooting Guard",    desc: "Score, slash, shoot off screens",    emoji: "2️⃣" },
+      { value: "sf", label: "Small Forward",     desc: "Versatile inside-out game",          emoji: "3️⃣" },
+      { value: "c",  label: "Big / Center",      desc: "Paint dominance, post game",         emoji: "5️⃣" },
+    ],
+  },
+  {
+    id: "attack",
+    text: "How do you attack the basket?",
+    subtitle: "Be honest about your real game.",
+    options: [
+      { value: "cuts",      label: "Quick cuts & change of direction", desc: "Blow past with footwork",        emoji: "⚡" },
+      { value: "explosive", label: "Explosive first step",             desc: "Blow past off the dribble",      emoji: "🚀" },
+      { value: "midrange",  label: "Mid-range & step-backs",           desc: "Pull-ups and step-back 3s",      emoji: "🎯" },
+      { value: "power",     label: "Power to the rim",                 desc: "Physical, downhill game",        emoji: "💪" },
+    ],
+  },
+  {
+    id: "cushionPref",
+    text: "What matters more to you underfoot?",
+    subtitle: "Both are valid — this is personal.",
+    options: [
+      { value: "court",   label: "Court feel",          desc: "Feel the floor, maximum control",        emoji: "🦶" },
+      { value: "cushion", label: "Impact protection",   desc: "Cushion for jumps and hard landings",    emoji: "🛡️" },
+    ],
+  },
+  {
+    id: "surface",
+    text: "Where do you play most?",
+    subtitle: "Traction pattern matters a lot here.",
+    options: [
+      { value: "indoor",  label: "Clean indoor gym",      desc: "Polished hardwood",          emoji: "🏟️" },
+      { value: "dusty",   label: "Dusty or dirty courts", desc: "Inconsistent traction",      emoji: "🌀" },
+      { value: "outdoor", label: "Outdoor courts",        desc: "Asphalt or concrete",        emoji: "🌤️" },
+    ],
+  },
+  {
+    id: "injury",
+    text: "Any injury concerns to protect?",
+    subtitle: "This affects which features we prioritize.",
+    options: [
+      { value: "ankle", label: "Ankles",    desc: "Need extra ankle support",    emoji: "🦵" },
+      { value: "knee",  label: "Knees",     desc: "Need extra cushioning",       emoji: "🦴" },
+      { value: "none",  label: "All good",  desc: "Pure performance focus",      emoji: "✅" },
+    ],
+  },
+  {
+    id: "weightPref",
+    text: "How important is shoe weight?",
+    subtitle: "Lighter = faster, heavier = more stable.",
+    options: [
+      { value: "ultralight", label: "Ultra lightweight", desc: "Every ounce counts",      emoji: "🪶" },
+      { value: "balanced",   label: "Balanced",          desc: "Speed with stability",    emoji: "⚖️" },
+      { value: "heavy",      label: "Doesn't matter",    desc: "Stability first",         emoji: "🏔️" },
+    ],
+  },
+];
