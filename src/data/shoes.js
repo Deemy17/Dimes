@@ -103,10 +103,10 @@ export const fallbackShoes = [
 ];
 
 export const nbaArchetypes = [
-  { name: "Stephen Curry",  archetype: "Quick Shooter",     badge: "Shifty Guard",   description: "You rely on quickness, off-ball movement, and shooting off the dribble.", positions: ["pg"],       attacks: ["midrange","cuts"] },
-  { name: "Ja Morant",      archetype: "Explosive Slasher", badge: "Athletic Guard",  description: "You attack the rim at full speed and finish through contact.",             positions: ["pg"],       attacks: ["explosive","cuts"] },
-  { name: "Luka Dončić",    archetype: "Crafty Playmaker",  badge: "Floor General",   description: "You control the game through patience, IQ, and creating for yourself.",    positions: ["sg","sf"],  attacks: ["midrange","power"] },
-  { name: "Giannis",        archetype: "Power Driver",      badge: "Power Player",    description: "You bulldoze to the rim and punish defenders with physicality.",           positions: ["sf","c"],   attacks: ["power","explosive"] },
-  { name: "Kevin Durant",   archetype: "Versatile Scorer",  badge: "Wing Scorer",     description: "You score from everywhere — mid-range, pull-ups, and smooth cuts.",       positions: ["sf"],       attacks: ["midrange","cuts"] },
-  { name: "Nikola Jokić",   archetype: "Skilled Big",       badge: "Skilled Big",     description: "You're a cerebral post player who scores methodically.",                  positions: ["c","sf"],   attacks: ["midrange","power"] },
+  { name: "Stephen Curry",  archetype: "Quick Shooter",     badge: "Shifty Guard",   description: "You rely on quickness, off-ball movement, and shooting off the dribble.", positions: ["pg"],        playstyles: ["shooter","playmaker"] },
+  { name: "Ja Morant",      archetype: "Explosive Slasher", badge: "Athletic Guard",  description: "You attack the rim at full speed and finish through contact.",             positions: ["pg","sg"],   playstyles: ["slasher","twoway"] },
+  { name: "Luka Dončić",    archetype: "Crafty Playmaker",  badge: "Floor General",   description: "You control the game through patience, IQ, and creating for yourself.",    positions: ["sg","sf"],   playstyles: ["playmaker","shooter"] },
+  { name: "Giannis",        archetype: "Power Driver",      badge: "Power Player",    description: "You bulldoze to the rim and punish defenders with physicality.",           positions: ["pf","sf"],   playstyles: ["power","slasher"] },
+  { name: "Kevin Durant",   archetype: "Versatile Scorer",  badge: "Wing Scorer",     description: "You score from everywhere — mid-range, pull-ups, and smooth cuts.",       positions: ["sf","pf"],   playstyles: ["shooter","twoway"] },
+  { name: "Nikola Jokić",   archetype: "Skilled Big",       badge: "Skilled Big",     description: "You're a cerebral post player who scores methodically.",                  positions: ["c","pf"],    playstyles: ["playmaker","power"] },
 ];
