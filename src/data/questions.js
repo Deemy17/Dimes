@@ -12,14 +12,25 @@ export const questions = [
     ],
   },
   {
-    id: "sizeProfile",
-    text: "What is your height & weight?",
-    subtitle: "Helps us match cushion and support to your build.",
+    id: "height",
+    text: "What is your height?",
+    subtitle: "Helps us tailor support and fit recommendations.",
     options: [
-      { value: "small",   label: "Under 5'10\" / Under 160 lbs",  desc: "Lightweight, quick guard",         emoji: "🐇" },
-      { value: "medium",  label: "5'10\"–6'2\" / 160–190 lbs",    desc: "Average build, all-around",        emoji: "🏃" },
-      { value: "large",   label: "6'2\"–6'6\" / 190–225 lbs",     desc: "Athletic wing or stretch big",     emoji: "💪" },
-      { value: "xlarge",  label: "6'6\"+ / 225+ lbs",             desc: "Big man, high-impact player",      emoji: "🏔️" },
+      { value: "short",   label: "Under 5'8\"",     desc: "Compact and quick",              emoji: "🐇" },
+      { value: "medium",  label: "5'8\" – 6'0\"",   desc: "Average guard/wing height",      emoji: "🏃" },
+      { value: "tall",    label: "6'0\" – 6'4\"",   desc: "Wing or stretch big range",      emoji: "💪" },
+      { value: "xtall",   label: "6'4\"+",           desc: "Big man territory",              emoji: "🏔️" },
+    ],
+  },
+  {
+    id: "weight",
+    text: "What is your weight?",
+    subtitle: "Heavier players need more cushion and support.",
+    options: [
+      { value: "light",   label: "Under 160 lbs",   desc: "Lightweight, speed-focused",     emoji: "🪶" },
+      { value: "average", label: "160 – 200 lbs",   desc: "Average build",                  emoji: "⚖️" },
+      { value: "heavy",   label: "200 – 240 lbs",   desc: "Stronger, physical build",       emoji: "🦾" },
+      { value: "xheavy",  label: "240+ lbs",         desc: "High-impact, needs max support", emoji: "🏋️" },
     ],
   },
   {
