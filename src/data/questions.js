@@ -13,14 +13,9 @@ export const questions = [
   },
   {
     id: "height",
+    type: "height-picker",
     text: "What is your height?",
     subtitle: "Helps us tailor support and fit recommendations.",
-    options: [
-      { value: "short",   label: "Under 5'8\"",     desc: "Compact and quick",              emoji: "🐇" },
-      { value: "medium",  label: "5'8\" – 6'0\"",   desc: "Average guard/wing height",      emoji: "🏃" },
-      { value: "tall",    label: "6'0\" – 6'4\"",   desc: "Wing or stretch big range",      emoji: "💪" },
-      { value: "xtall",   label: "6'4\"+",           desc: "Big man territory",              emoji: "🏔️" },
-    ],
   },
   {
     id: "weight",

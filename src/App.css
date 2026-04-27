@@ -74,6 +74,19 @@ body{font-family:var(--font-b);background:var(--bg);color:var(--text-1);min-heig
 .btn-submit--active:hover{background:#33DDFF;transform:translateY(-1px);box-shadow:0 0 40px rgba(0,212,255,0.35)}
 .btn-submit--active:active{transform:scale(.99)}
 
+/* HEIGHT PICKER */
+.height-picker{display:flex;flex-direction:column;align-items:center;gap:24px;width:100%;padding-top:8px}
+.height-columns{display:flex;align-items:center;gap:24px}
+.height-col{display:flex;flex-direction:column;align-items:center;gap:12px}
+.height-arrow{background:var(--surface-2);border:1px solid var(--border-md);color:var(--aqua);font-size:20px;width:52px;height:52px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s,border-color .15s,transform .1s;clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px))}
+.height-arrow:hover{background:var(--surface-3);border-color:var(--aqua);transform:scale(1.05)}
+.height-arrow:active{transform:scale(.97)}
+.height-value{font-family:var(--font-d);font-size:72px;font-weight:900;color:var(--aqua);line-height:1;min-width:72px;text-align:center;letter-spacing:-2px}
+.height-unit{font-family:var(--font-d);font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text-2)}
+.height-divider{font-family:var(--font-d);font-size:48px;font-weight:900;color:var(--text-3);line-height:1;align-self:center;margin-top:-20px}
+.height-display{font-family:var(--font-d);font-size:28px;font-weight:700;letter-spacing:2px;color:var(--text-2);text-align:center}
+.height-confirm{margin-top:8px}
+
 /* RESULTS */
 .results-screen{width:100%;max-width:var(--max-w);opacity:0;transition:opacity .4s ease}
 .results-visible{opacity:1}

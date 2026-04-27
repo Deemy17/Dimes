@@ -3,6 +3,52 @@ import { questions } from "../data/questions";
 
 const TOTAL = questions.length + 1;
 
+function HeightPicker({ onConfirm }) {
+  const [feet, setFeet] = useState(6);
+  const [inches, setInches] = useState(0);
+
+  const minFeet = 4; const maxFeet = 7;
+  const minInches = 0; const maxInches = 11;
+
+  function changeFeet(dir) {
+    setFeet((f) => Math.min(maxFeet, Math.max(minFeet, f + dir)));
+  }
+  function changeInches(dir) {
+    setInches((i) => Math.min(maxInches, Math.max(minInches, i + dir)));
+  }
+
+  return (
+    <div className="height-picker">
+      <div className="height-columns">
+        {/* FEET */}
+        <div className="height-col">
+          <button className="height-arrow" onClick={() => changeFeet(1)}>▲</button>
+          <div className="height-value">{feet}</div>
+          <button className="height-arrow" onClick={() => changeFeet(-1)}>▼</button>
+          <div className="height-unit">ft</div>
+        </div>
+
+        <div className="height-divider">′</div>
+
+        {/* INCHES */}
+        <div className="height-col">
+          <button className="height-arrow" onClick={() => changeInches(1)}>▲</button>
+          <div className="height-value">{inches}</div>
+          <button className="height-arrow" onClick={() => changeInches(-1)}>▼</button>
+          <div className="height-unit">in</div>
+        </div>
+      </div>
+
+      <p className="height-display">{feet}′ {inches}″</p>
+
+      <button className="btn-submit btn-submit--active height-confirm" onClick={() => onConfirm(feet * 12 + inches)}>
+        <span>Confirm Height</span>
+        <span className="btn-arrow">→</span>
+      </button>
+    </div>
+  );
+}
+
 export default function QuizScreen({ onComplete }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState({});
@@ -12,20 +58,34 @@ export default function QuizScreen({ onComplete }) {
   const [favShoe, setFavShoe] = useState("");
   const question = !isFinalQuestion ? questions[currentIndex] : null;
   const progress = (currentIndex / TOTAL) * 100;
+  const isHeightQuestion = question?.type === "height-picker";
+
+  function advance(id, value) {
+    if (animating) return;
+    const newAnswers = { ...answers, [id]: value };
+    setAnswers(newAnswers);
+    setAnimating(true);
+    setTimeout(() => {
+      setCurrentIndex((i) => i + 1);
+      setSelected(null);
+      setAnimating(false);
+    }, 250);
+  }
 
   function handleSelect(value) {
     if (animating) return;
     setSelected(value);
-    setTimeout(() => {
-      const newAnswers = { ...answers, [question.id]: value };
-      setAnswers(newAnswers);
-      setAnimating(true);
-      setTimeout(() => {
-        setCurrentIndex((i) => i + 1);
-        setSelected(null);
-        setAnimating(false);
-      }, 250);
-    }, 300);
+    setTimeout(() => advance(question.id, value), 300);
+  }
+
+  function handleHeightConfirm(totalInches) {
+    // Map total inches → height category for the matching algorithm
+    let category;
+    if (totalInches < 68)       category = "short";   // under 5'8"
+    else if (totalInches < 73)  category = "medium";  // 5'8" – 6'1"
+    else if (totalInches < 77)  category = "tall";    // 6'1" – 6'4"
+    else                        category = "xtall";   // 6'5"+
+    advance(question.id, category);
   }
 
   function handleFinalSubmit() {
@@ -47,18 +107,23 @@ export default function QuizScreen({ onComplete }) {
           <div className="q-eyebrow">Question {currentIndex + 1}</div>
           <h2 className="q-text">{question.text}</h2>
           <p className="q-subtitle">{question.subtitle}</p>
-          <div className="options-list">
-            {question.options.map((opt) => (
-              <button key={opt.value} className={`opt-btn ${selected === opt.value ? "selected" : ""}`} onClick={() => handleSelect(opt.value)}>
-                <span className="opt-emoji">{opt.emoji}</span>
-                <span className="opt-content">
-                  <span className="opt-label">{opt.label}</span>
-                  <span className="opt-desc">{opt.desc}</span>
-                </span>
-                <span className="opt-check">{selected === opt.value ? "✓" : ""}</span>
-              </button>
-            ))}
-          </div>
+
+          {isHeightQuestion ? (
+            <HeightPicker onConfirm={handleHeightConfirm} />
+          ) : (
+            <div className="options-list">
+              {question.options.map((opt) => (
+                <button key={opt.value} className={`opt-btn ${selected === opt.value ? "selected" : ""}`} onClick={() => handleSelect(opt.value)}>
+                  <span className="opt-emoji">{opt.emoji}</span>
+                  <span className="opt-content">
+                    <span className="opt-label">{opt.label}</span>
+                    <span className="opt-desc">{opt.desc}</span>
+                  </span>
+                  <span className="opt-check">{selected === opt.value ? "✓" : ""}</span>
+                </button>
+              ))}
+            </div>
+          )}
         </>
       ) : (
         <>
