@@ -5,6 +5,46 @@ import ResultsScreen from "./components/ResultsScreen";
 import { useShoes, computeResults } from "./hooks/useMatching";
 import "./App.css";
 
+function DimesLogo() {
+  return (
+    <span className="dimes-logo">
+      D
+      <span className="logo-i-group">
+        <svg className="dime-coin" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="coinBase" cx="38%" cy="32%" r="70%">
+              <stop offset="0%"   stopColor="#ffffff"/>
+              <stop offset="25%"  stopColor="#e4e4e4"/>
+              <stop offset="60%"  stopColor="#b8b8b8"/>
+              <stop offset="100%" stopColor="#787878"/>
+            </radialGradient>
+            <radialGradient id="coinShine" cx="30%" cy="20%" r="55%">
+              <stop offset="0%"   stopColor="rgba(255,255,255,0.85)"/>
+              <stop offset="60%"  stopColor="rgba(255,255,255,0.1)"/>
+              <stop offset="100%" stopColor="rgba(255,255,255,0)"/>
+            </radialGradient>
+            <radialGradient id="coinEdge" cx="50%" cy="50%" r="50%">
+              <stop offset="80%"  stopColor="rgba(0,0,0,0)"/>
+              <stop offset="100%" stopColor="rgba(0,0,0,0.25)"/>
+            </radialGradient>
+          </defs>
+          {/* Base coin */}
+          <circle cx="10" cy="10" r="9.5" fill="url(#coinBase)"/>
+          {/* Edge shadow */}
+          <circle cx="10" cy="10" r="9.5" fill="url(#coinEdge)"/>
+          {/* Shine overlay */}
+          <circle cx="10" cy="10" r="9.5" fill="url(#coinShine)"/>
+          {/* Rim */}
+          <circle cx="10" cy="10" r="9.5" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="0.6"/>
+        </svg>
+        {/* dotless i */}
+        &#305;
+      </span>
+      mes
+    </span>
+  );
+}
+
 const SCREENS = { HOME: "home", QUIZ: "quiz", RESULTS: "results" };
 
 // API key is stored securely in Vercel environment variables
@@ -35,7 +75,7 @@ export default function App() {
     <div className="app-shell">
       <header className="app-header">
         <span className="header-logo" onClick={handleRestart}>
-          D<span className="accent">I</span>MES
+          <DimesLogo />
         </span>
         {screen !== SCREENS.HOME && (
           <button className="header-back" onClick={handleRestart}>Home</button>
