@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap');
-@font-face{font-family:'Neuropol';src:url('/Neuropol.otf') format('opentype');font-weight:normal;font-style:normal;font-display:swap}
+@font-face{font-family:'Neuropol';src:url('./fonts/Neuropol.otf') format('opentype');font-weight:normal;font-style:normal;font-display:swap}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --aqua:#00D4FF;--aqua-dim:#00A8CC;--aqua-dark:#007A99;--aqua-glow:rgba(0,212,255,0.15);
