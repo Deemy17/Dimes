@@ -87,6 +87,14 @@ body{font-family:var(--font-b);background:var(--bg);color:var(--text-1);min-heig
 .height-display{font-family:var(--font-d);font-size:28px;font-weight:700;letter-spacing:2px;color:var(--text-2);text-align:center}
 .height-confirm{margin-top:8px}
 
+/* WEIGHT INPUT */
+.weight-input-wrap{display:flex;flex-direction:column;align-items:center;gap:20px;width:100%;padding-top:8px}
+.weight-field{display:flex;align-items:baseline;gap:12px}
+.weight-input{background:transparent;border:none;border-bottom:3px solid var(--aqua);color:var(--aqua);font-family:var(--font-d);font-size:96px;font-weight:900;width:180px;text-align:center;outline:none;letter-spacing:-4px;line-height:1}
+.weight-input::placeholder{color:var(--text-3)}
+.weight-unit{font-family:var(--font-d);font-size:28px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text-2)}
+.weight-error{font-size:13px;color:#FF6B6B;text-align:center;font-family:var(--font-b)}
+
 /* RESULTS */
 .results-screen{width:100%;max-width:var(--max-w);opacity:0;transition:opacity .4s ease}
 .results-visible{opacity:1}

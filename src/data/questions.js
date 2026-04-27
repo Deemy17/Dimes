@@ -19,14 +19,9 @@ export const questions = [
   },
   {
     id: "weight",
+    type: "weight-input",
     text: "What is your weight?",
     subtitle: "Heavier players need more cushion and support.",
-    options: [
-      { value: "light",   label: "Under 160 lbs",   desc: "Lightweight, speed-focused",     emoji: "🪶" },
-      { value: "average", label: "160 – 200 lbs",   desc: "Average build",                  emoji: "⚖️" },
-      { value: "heavy",   label: "200 – 240 lbs",   desc: "Stronger, physical build",       emoji: "🦾" },
-      { value: "xheavy",  label: "240+ lbs",         desc: "High-impact, needs max support", emoji: "🏋️" },
-    ],
   },
   {
     id: "playStyle",

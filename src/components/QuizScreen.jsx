@@ -3,6 +3,63 @@ import { questions } from "../data/questions";
 
 const TOTAL = questions.length + 1;
 
+function WeightInput({ onConfirm }) {
+  const [lbs, setLbs] = useState("");
+  const [error, setError] = useState("");
+
+  function handleChange(e) {
+    const val = e.target.value.replace(/\D/g, "");
+    setLbs(val);
+    setError("");
+  }
+
+  function handleConfirm() {
+    const num = parseInt(lbs, 10);
+    if (!num || num < 50 || num > 500) {
+      setError("Please enter a valid weight between 50 and 500 lbs.");
+      return;
+    }
+    let category;
+    if (num < 160)       category = "light";
+    else if (num < 200)  category = "average";
+    else if (num < 240)  category = "heavy";
+    else                 category = "xheavy";
+    onConfirm(category);
+  }
+
+  function handleKey(e) {
+    if (e.key === "Enter") handleConfirm();
+  }
+
+  return (
+    <div className="weight-input-wrap">
+      <div className="weight-field">
+        <input
+          className="weight-input"
+          type="text"
+          inputMode="numeric"
+          placeholder="000"
+          value={lbs}
+          onChange={handleChange}
+          onKeyDown={handleKey}
+          maxLength={3}
+          autoFocus
+        />
+        <span className="weight-unit">lbs</span>
+      </div>
+      {error && <p className="weight-error">{error}</p>}
+      <button
+        className={`btn-submit ${lbs ? "btn-submit--active" : ""}`}
+        onClick={handleConfirm}
+        disabled={!lbs}
+      >
+        <span>Confirm Weight</span>
+        <span className="btn-arrow">→</span>
+      </button>
+    </div>
+  );
+}
+
 function HeightPicker({ onConfirm }) {
   const [feet, setFeet] = useState(6);
   const [inches, setInches] = useState(0);
@@ -58,7 +115,8 @@ export default function QuizScreen({ onComplete }) {
   const [favShoe, setFavShoe] = useState("");
   const question = !isFinalQuestion ? questions[currentIndex] : null;
   const progress = (currentIndex / TOTAL) * 100;
-  const isHeightQuestion = question?.type === "height-picker";
+  const isHeightQuestion  = question?.type === "height-picker";
+  const isWeightQuestion  = question?.type === "weight-input";
 
   function advance(id, value) {
     if (animating) return;
@@ -76,6 +134,10 @@ export default function QuizScreen({ onComplete }) {
     if (animating) return;
     setSelected(value);
     setTimeout(() => advance(question.id, value), 300);
+  }
+
+  function handleWeightConfirm(category) {
+    advance(question.id, category);
   }
 
   function handleHeightConfirm(totalInches) {
@@ -110,6 +172,8 @@ export default function QuizScreen({ onComplete }) {
 
           {isHeightQuestion ? (
             <HeightPicker onConfirm={handleHeightConfirm} />
+          ) : isWeightQuestion ? (
+            <WeightInput onConfirm={handleWeightConfirm} />
           ) : (
             <div className="options-list">
               {question.options.map((opt) => (
