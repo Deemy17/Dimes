@@ -66,6 +66,16 @@ export const questions = [
     ],
   },
   {
+    id: "shoeHeight",
+    text: "What shoe height do you prefer?",
+    subtitle: "This affects ankle support and freedom of movement.",
+    options: [
+      { value: "low",  label: "Low Top",  desc: "Maximum freedom and quickness",          emoji: "⚡" },
+      { value: "mid",  label: "Mid Top",  desc: "Balance of mobility and ankle support",  emoji: "⚖️" },
+      { value: "high", label: "High Top", desc: "Maximum ankle lockdown and stability",   emoji: "🔒" },
+    ],
+  },
+  {
     id: "injury",
     text: "Do you have any injury concerns?",
     subtitle: "This affects which features we prioritize.",

@@ -62,7 +62,7 @@ export function useShoes() {
 }
 
 export function computeResults(answers, shoes) {
-  const { position, height, weight, playStyle, cushionPref, surface, weightPref, injury } = answers;
+  const { position, height, weight, playStyle, cushionPref, surface, weightPref, injury, shoeHeight } = answers;
 
   // NBA archetype match using new playstyles
   let bestArchetype = nbaArchetypes[0];
@@ -152,6 +152,14 @@ export function computeResults(answers, shoes) {
     if (weightPref === "ultralight" && shoe.scores.weight >= 8)                           s += 2;
     if (weightPref === "balanced"   && shoe.scores.weight >= 6 && shoe.scores.weight <= 8) s += 2;
     if (weightPref === "heavy"      && shoe.scores.weight <= 5)                           s += 2;
+
+    // --- SHOE HEIGHT PREFERENCE ---
+    const tag = shoe.tags || [];
+    if (shoeHeight === "low"  && tag.includes("low"))  s += 3;
+    if (shoeHeight === "mid"  && tag.includes("mid"))  s += 3;
+    if (shoeHeight === "high" && tag.includes("high")) s += 3;
+    // Cross-boost: ankle injury + high top
+    if (injury === "ankle" && shoeHeight === "high" && tag.includes("high")) s += 2;
 
     // --- BASELINE TRACTION (always matters) ---
     s += shoe.scores.traction * 0.4;
